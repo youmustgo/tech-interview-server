@@ -5,6 +5,9 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
+@Table(indexes = {
+        @Index(columnList = "created")
+})
 public class Post {
     @Id
     @GeneratedValue
