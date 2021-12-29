@@ -1,9 +1,10 @@
 package me.codinginterview.techinterviewserver.infra.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Comment {
@@ -12,4 +13,9 @@ public class Comment {
     Long id;
     @ManyToOne
     Post post;
+    // NOTE - only for counting
+    @ManyToMany(mappedBy = "likes")
+    @OrderColumn
+    @LazyCollection(LazyCollectionOption.EXTRA)
+    List<User> likedUsers;
 }

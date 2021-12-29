@@ -14,5 +14,5 @@ public class User {
     @ManyToMany
     List<Post> bookmarks;
     @ManyToMany
-    List<Post> likes;
+    List<Comment> likes;
 }
