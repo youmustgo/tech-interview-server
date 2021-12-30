@@ -19,6 +19,4 @@ public class Post {
     List<Comment> comments;
     @ManyToMany(mappedBy = "bookmarks")
     List<User> bookmarkedUsers;
-    @ManyToMany(mappedBy = "likes")
-    List<User> likedUsers;
 }
