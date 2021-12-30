@@ -5,6 +5,10 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
+@Table(indexes = {
+        @Index(columnList = "created"),
+        @Index(columnList = "commentCount")
+})
 public class Post {
     @Id
     @GeneratedValue
@@ -15,8 +19,7 @@ public class Post {
     Date created;
     @ManyToOne
     User owner;
-    @OneToMany(mappedBy = "post")
-    List<Comment> comments;
+    long commentCount;
     @ManyToMany(mappedBy = "bookmarks")
     List<User> bookmarkedUsers;
 }
