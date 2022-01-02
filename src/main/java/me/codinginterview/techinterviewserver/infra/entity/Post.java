@@ -2,7 +2,6 @@ package me.codinginterview.techinterviewserver.infra.entity;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table(indexes = {
@@ -20,6 +19,4 @@ public class Post {
     @ManyToOne
     User owner;
     long commentCount;
-    @ManyToMany(mappedBy = "bookmarks")
-    List<User> bookmarkedUsers;
 }
