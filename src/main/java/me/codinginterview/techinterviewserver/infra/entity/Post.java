@@ -1,8 +1,11 @@
 package me.codinginterview.techinterviewserver.infra.entity;
 
+import lombok.Getter;
+
 import javax.persistence.*;
 import java.util.Date;
 
+@Getter
 @Entity
 @Table(indexes = {
         @Index(columnList = "created"),
