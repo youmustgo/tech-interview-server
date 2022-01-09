@@ -22,7 +22,7 @@ public class PostController {
     public List<Post> getPosts(@RequestParam String orderBy,
                                @RequestParam String value,
                                @RequestParam boolean descending,
-                               @RequestParam long limit) {
+                               @RequestParam int limit) {
         return postFetcher.getPosts(orderBy, value, descending, limit);
     }
 }

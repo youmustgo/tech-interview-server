@@ -3,6 +3,7 @@ package me.codinginterview.techinterviewserver.domain;
 import lombok.AllArgsConstructor;
 import me.codinginterview.techinterviewserver.infra.entity.Post;
 import me.codinginterview.techinterviewserver.infra.entity.PostRepository;
+import org.springframework.data.domain.PageRequest;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -12,11 +13,11 @@ import java.util.List;
 @AllArgsConstructor
 public class PostFetcher {
     private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    private final long defaultLimit;
-    private final long maximumLimit;
+    private final int defaultLimit;
+    private final int maximumLimit;
     private final PostRepository postRepository;
 
-    public List<Post> getPosts(String orderBy, String value, boolean descending, long limit) {
+    public List<Post> getPosts(String orderBy, String value, boolean descending, int limit) {
         boolean isLimitOutOfRange = (limit <= 0) || (limit >= maximumLimit);
         if (isLimitOutOfRange) {
             limit = defaultLimit;
@@ -24,15 +25,15 @@ public class PostFetcher {
         switch (orderBy.toLowerCase()) {
             case "date":
                 if (descending) {
-                    return postRepository.findByCreatedLessThanEqualOrderByCreatedDesc(parseDate(value), limit);
+                    return postRepository.findByCreatedLessThanEqualOrderByCreatedDesc(parseDate(value), PageRequest.of(0, limit));
                 } else {
-                    return postRepository.findByCreatedGreaterThanOrderByCreatedAsc(parseDate(value), limit);
+                    return postRepository.findByCreatedGreaterThanOrderByCreatedAsc(parseDate(value), PageRequest.of(0, limit));
                 }
             case "comment":
                 if (descending) {
-                    return postRepository.findByCommentCountLessThanEqualOrderByCommentCountDesc(Integer.parseInt(value), limit);
+                    return postRepository.findByCommentCountLessThanEqualOrderByCommentCountDesc(Integer.parseInt(value), PageRequest.of(0, limit));
                 } else {
-                    return postRepository.findByCommentCountGreaterThanEqualOrderByCommentCountAsc(Integer.parseInt(value), limit);
+                    return postRepository.findByCommentCountGreaterThanEqualOrderByCommentCountAsc(Integer.parseInt(value), PageRequest.of(0, limit));
                 }
             default:
                 throw new IllegalArgumentException("order by is empty");
