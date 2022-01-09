@@ -1,9 +1,11 @@
 package me.codinginterview.techinterviewserver.infra.entity;
 
+import lombok.Getter;
+
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 
+@Getter
 @Entity
 @Table(indexes = {
         @Index(columnList = "created"),
@@ -20,6 +22,4 @@ public class Post {
     @ManyToOne
     User owner;
     long commentCount;
-    @ManyToMany(mappedBy = "bookmarks")
-    List<User> bookmarkedUsers;
 }
