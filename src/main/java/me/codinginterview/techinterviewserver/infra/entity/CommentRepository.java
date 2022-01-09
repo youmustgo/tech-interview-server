@@ -1,6 +1,5 @@
-package me.codinginterview.techinterviewserver.respository;
+package me.codinginterview.techinterviewserver.infra.entity;
 
-import me.codinginterview.techinterviewserver.infra.entity.Comment;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 

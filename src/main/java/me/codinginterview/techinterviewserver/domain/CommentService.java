@@ -1,8 +1,8 @@
-package me.codinginterview.techinterviewserver.service;
+package me.codinginterview.techinterviewserver.domain;
 
 import lombok.RequiredArgsConstructor;
 import me.codinginterview.techinterviewserver.infra.entity.Comment;
-import me.codinginterview.techinterviewserver.respository.CommentRepository;
+import me.codinginterview.techinterviewserver.infra.entity.CommentRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Comparator;

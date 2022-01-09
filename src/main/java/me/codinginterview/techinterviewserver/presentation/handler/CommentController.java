@@ -1,8 +1,8 @@
-package me.codinginterview.techinterviewserver.controller;
+package me.codinginterview.techinterviewserver.presentation.handler;
 
 import lombok.RequiredArgsConstructor;
 import me.codinginterview.techinterviewserver.infra.entity.Comment;
-import me.codinginterview.techinterviewserver.service.CommentService;
+import me.codinginterview.techinterviewserver.domain.CommentService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
