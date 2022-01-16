@@ -1,10 +1,12 @@
 package me.codinginterview.techinterviewserver.infra.entity;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
 
+@NoArgsConstructor
 @Getter
 @Entity
 @Table(indexes = {
@@ -22,4 +24,8 @@ public class Post {
     @ManyToOne
     User owner;
     long commentCount;
+
+    public Post(Long id) {
+        this.id = id;
+    }
 }
