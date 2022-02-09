@@ -9,8 +9,11 @@ import javax.persistence.*;
 import java.util.Date;
 
 @NoArgsConstructor
+<<<<<<< HEAD
 @AllArgsConstructor
 @Builder
+=======
+>>>>>>> 2074ec6 (Add comments api)
 @Getter
 @Entity
 @Table(indexes = {
@@ -32,6 +35,7 @@ public class Post {
     public Post(Long id) {
         this.id = id;
     }
+<<<<<<< HEAD
 
     public static Post fromDomain(me.codinginterview.techinterviewserver.domain.post.Post post) {
         return Post.builder()
@@ -52,4 +56,6 @@ public class Post {
                                                                       .commentCount(commentCount)
                                                                       .build();
     }
+=======
+>>>>>>> 2074ec6 (Add comments api)
 }

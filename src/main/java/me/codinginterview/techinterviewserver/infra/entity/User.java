@@ -1,17 +1,30 @@
 package me.codinginterview.techinterviewserver.infra.entity;
 
 import lombok.Getter;
+<<<<<<< HEAD
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+=======
+import lombok.NoArgsConstructor;
+import me.codinginterview.techinterviewserver.infra.entity.comment.Comment;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+>>>>>>> 2074ec6 (Add comments api)
 import java.util.List;
 
 @NoArgsConstructor
 @Getter
+<<<<<<< HEAD
 @AllArgsConstructor
 @Builder
+=======
+>>>>>>> 2074ec6 (Add comments api)
 @Entity
 @Table(indexes = {
         @Index(columnList = "namespace,localId"),
@@ -29,14 +42,18 @@ public class User {
     List<Post> bookmarks;
     @ManyToMany
     List<Comment> likes;
+<<<<<<< HEAD
     @Convert(converter = RoleConverter.class)
     Role role;
     @ManyToMany
     List<Collage> collageBookmarks;
+=======
+>>>>>>> 2074ec6 (Add comments api)
 
     public User(Long id) {
         this.id = id;
     }
+<<<<<<< HEAD
 
     public static User fromDomain(me.codinginterview.techinterviewserver.domain.user.User user) {
         return User.builder()
@@ -57,4 +74,6 @@ public class User {
                                                                       .session(session)
                                                                       .build();
     }
+=======
+>>>>>>> 2074ec6 (Add comments api)
 }
