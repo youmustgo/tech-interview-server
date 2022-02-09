@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import me.codinginterview.techinterviewserver.infra.entity.comment.Comment;
 import java.util.List;
 
 @NoArgsConstructor

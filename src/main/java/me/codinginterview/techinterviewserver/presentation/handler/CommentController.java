@@ -1,12 +1,10 @@
 package me.codinginterview.techinterviewserver.presentation.handler;
 
 import lombok.RequiredArgsConstructor;
-import me.codinginterview.techinterviewserver.infra.entity.Comment;
-import me.codinginterview.techinterviewserver.domain.CommentService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import me.codinginterview.techinterviewserver.domain.comment.CreateCommentDto;
+import me.codinginterview.techinterviewserver.domain.comment.CommentService;
+import me.codinginterview.techinterviewserver.infra.entity.comment.Comment;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,8 +15,23 @@ public class CommentController {
 
     private final CommentService commentService;
 
-    @GetMapping
-    List<Comment> getComments(@RequestParam String orderBy, @RequestParam boolean descending) {
-        return commentService.getComments(orderBy, descending);
+    @GetMapping("/{postId}")
+    List<Comment> getComments(@PathVariable Long postId, @RequestParam String orderBy, @RequestParam boolean descending) {
+        return commentService.getComments(postId, orderBy, descending);
+    }
+
+    @PostMapping("/{postId}")
+    Comment createComment(@PathVariable Long postId, @RequestBody CreateCommentDto createCommentDto) {
+        return commentService.createComment(postId, createCommentDto.getCommentId(), createCommentDto.getBody());
+    }
+
+    @PutMapping("/{commentId}")
+    void updateComment(@PathVariable Long commentId, @RequestBody CreateCommentDto createCommentDto) {
+        commentService.updateComment(commentId, createCommentDto.getBody());
+    }
+
+    @DeleteMapping("/{commentId}")
+    void deleteComment(@PathVariable Long commentId) {
+        commentService.deleteComment(commentId);
     }
 }
