@@ -21,6 +21,7 @@ public class DomainConfig {
         return new UserRegisterService(domainUserRepository);
     }
 
+    @Bean
     public PostInserter postInserter(me.codinginterview.techinterviewserver.domain.post.PostRepository postRepository) {
         return new PostInserter(postRepository);
     }
