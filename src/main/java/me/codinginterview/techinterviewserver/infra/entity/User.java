@@ -1,11 +1,13 @@
 package me.codinginterview.techinterviewserver.infra.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
 import java.util.List;
 
+@NoArgsConstructor
+@Getter
 @Entity
 public class User {
     @Id
@@ -15,4 +17,12 @@ public class User {
     List<Post> bookmarks;
     @ManyToMany
     List<Comment> likes;
+    @Convert(converter = RoleConverter.class)
+    Role role;
+    @ManyToMany
+    List<Collage> collageBookmarks;
+
+    public User(Long id) {
+        this.id = id;
+    }
 }
