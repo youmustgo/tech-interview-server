@@ -2,10 +2,11 @@ package me.codinginterview.techinterviewserver.domain;
 
 import me.codinginterview.techinterviewserver.domain.user.UserRegisterService;
 import me.codinginterview.techinterviewserver.domain.user.UserRepository;
+import me.codinginterview.techinterviewserver.infra.entity.post.PostRepository;
 import me.codinginterview.techinterviewserver.domain.post.PostFetcher;
 import me.codinginterview.techinterviewserver.domain.post.PostInserter;
 import me.codinginterview.techinterviewserver.domain.post.PostUpdater;
-import me.codinginterview.techinterviewserver.infra.entity.PostRepository;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

@@ -1,8 +1,9 @@
 package me.codinginterview.techinterviewserver.presentation.handler;
 
 import lombok.RequiredArgsConstructor;
-import me.codinginterview.techinterviewserver.domain.CollageService;
-import me.codinginterview.techinterviewserver.dto.NewCollageDto;
+import me.codinginterview.techinterviewserver.domain.collage.CollageDto;
+import me.codinginterview.techinterviewserver.domain.collage.CollageService;
+
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -13,7 +14,7 @@ public class CollageController {
     private final CollageService collageService;
 
     @PostMapping
-    void createCollage(@RequestBody NewCollageDto newCollageDto) {
+    void createCollage(@RequestBody CollageDto newCollageDto) {
         collageService.createdCollage(newCollageDto);
     }
 

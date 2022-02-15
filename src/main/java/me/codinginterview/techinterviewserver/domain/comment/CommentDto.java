@@ -4,7 +4,7 @@ import lombok.Getter;
 import org.springframework.lang.Nullable;
 
 @Getter
-public class CreateCommentDto {
+public class CommentDto {
     private Long commentId;
 
     private String body;

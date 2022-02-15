@@ -1,4 +1,4 @@
-package me.codinginterview.techinterviewserver.infra.entity;
+package me.codinginterview.techinterviewserver.infra.entity.user;
 
 import lombok.Getter;
 import lombok.AllArgsConstructor;
@@ -6,7 +6,14 @@ import lombok.Builder;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+
+import me.codinginterview.techinterviewserver.domain.user.UserDto;
+import me.codinginterview.techinterviewserver.infra.entity.collage.Collage;
+import me.codinginterview.techinterviewserver.infra.entity.collage.Role;
+import me.codinginterview.techinterviewserver.infra.entity.collage.RoleConverter;
 import me.codinginterview.techinterviewserver.infra.entity.comment.Comment;
+import me.codinginterview.techinterviewserver.infra.entity.post.Post;
+
 import java.util.List;
 
 @NoArgsConstructor
@@ -39,7 +46,7 @@ public class User {
         this.id = id;
     }
 
-    public static User fromDomain(me.codinginterview.techinterviewserver.domain.user.User user) {
+    public static User fromDomain(UserDto user) {
         return User.builder()
                    .id(user.getId())
                    .namespace(user.getNamespace())
@@ -49,13 +56,13 @@ public class User {
                    .build();
     }
 
-    public me.codinginterview.techinterviewserver.domain.user.User toDomain() {
-        return me.codinginterview.techinterviewserver.domain.user.User.builder()
-                                                                      .id(id)
-                                                                      .namespace(namespace)
-                                                                      .localId(localId)
-                                                                      .name(name)
-                                                                      .session(session)
-                                                                      .build();
+    public UserDto toDomain() {
+        return UserDto.builder()
+                      .id(id)
+                      .namespace(namespace)
+                      .localId(localId)
+                      .name(name)
+                      .session(session)
+                      .build();
     }
 }

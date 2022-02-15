@@ -4,8 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import me.codinginterview.techinterviewserver.infra.entity.Post;
-import me.codinginterview.techinterviewserver.infra.entity.User;
+import me.codinginterview.techinterviewserver.infra.entity.post.Post;
+import me.codinginterview.techinterviewserver.infra.entity.user.User;
+
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 

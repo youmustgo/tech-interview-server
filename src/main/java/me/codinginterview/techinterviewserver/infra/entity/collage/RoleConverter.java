@@ -1,4 +1,4 @@
-package me.codinginterview.techinterviewserver.infra.entity;
+package me.codinginterview.techinterviewserver.infra.entity.collage;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;

@@ -11,10 +11,10 @@ public class UserRegisterService {
     private final UserRepository userRepository;
 
     @Transactional
-    public User register(User user) {
+    public UserDto register(UserDto user) {
         validateUser(user);
         Long mayBeUserId = userRepository.find(user.getNamespace(), user.getLocalId())
-                                         .map(User::getId)
+                                         .map(UserDto::getId)
                                          .orElse(null);
         return userRepository.register(user.toBuilder()
                                            .id(mayBeUserId)
@@ -22,7 +22,7 @@ public class UserRegisterService {
                                            .build());
     }
 
-    private void validateUser(User user) {
+    private void validateUser(UserDto user) {
         if (StringUtils.isBlank(user.getNamespace())) {
             throw new DomainException.BadRequest("user namespace is empty");
         }

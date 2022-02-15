@@ -1,4 +1,4 @@
-package me.codinginterview.techinterviewserver.infra.entity;
+package me.codinginterview.techinterviewserver.infra.entity.user;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

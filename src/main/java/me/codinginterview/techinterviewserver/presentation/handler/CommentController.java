@@ -1,7 +1,7 @@
 package me.codinginterview.techinterviewserver.presentation.handler;
 
 import lombok.RequiredArgsConstructor;
-import me.codinginterview.techinterviewserver.domain.comment.CreateCommentDto;
+import me.codinginterview.techinterviewserver.domain.comment.CommentDto;
 import me.codinginterview.techinterviewserver.domain.comment.CommentService;
 import me.codinginterview.techinterviewserver.infra.entity.comment.Comment;
 import org.springframework.web.bind.annotation.*;
@@ -21,12 +21,12 @@ public class CommentController {
     }
 
     @PostMapping("/{postId}")
-    Comment createComment(@PathVariable Long postId, @RequestBody CreateCommentDto createCommentDto) {
+    Comment createComment(@PathVariable Long postId, @RequestBody CommentDto createCommentDto) {
         return commentService.createComment(postId, createCommentDto.getCommentId(), createCommentDto.getBody());
     }
 
     @PutMapping("/{commentId}")
-    void updateComment(@PathVariable Long commentId, @RequestBody CreateCommentDto createCommentDto) {
+    void updateComment(@PathVariable Long commentId, @RequestBody CommentDto createCommentDto) {
         commentService.updateComment(commentId, createCommentDto.getBody());
     }
 

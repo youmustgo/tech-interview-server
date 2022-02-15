@@ -1,8 +1,10 @@
-package me.codinginterview.techinterviewserver.infra.entity;
+package me.codinginterview.techinterviewserver.infra.entity.collage;
 
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import me.codinginterview.techinterviewserver.infra.entity.post.Post;
+import me.codinginterview.techinterviewserver.infra.entity.user.User;
 
 import javax.persistence.*;
 import java.util.List;

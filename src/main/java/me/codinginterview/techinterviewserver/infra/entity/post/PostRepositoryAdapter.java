@@ -1,16 +1,16 @@
-package me.codinginterview.techinterviewserver.infra.entity;
+package me.codinginterview.techinterviewserver.infra.entity.post;
 
 import lombok.AllArgsConstructor;
-import me.codinginterview.techinterviewserver.domain.post.Post;
+import me.codinginterview.techinterviewserver.domain.post.PostDto;
 import me.codinginterview.techinterviewserver.domain.post.PostRepository;
 
 @AllArgsConstructor
 public class PostRepositoryAdapter implements PostRepository {
-    private final me.codinginterview.techinterviewserver.infra.entity.PostRepository postRepository;
+    private final me.codinginterview.techinterviewserver.infra.entity.post.PostRepository postRepository;
 
     @Override
-    public Post insert(Post post) {
-        return postRepository.save(me.codinginterview.techinterviewserver.infra.entity.Post.fromDomain(post)).toDomain();
+    public PostDto insert(PostDto post) {
+        return postRepository.save(me.codinginterview.techinterviewserver.infra.entity.post.Post.fromDomain(post)).toDomain();
     }
 
     @Override

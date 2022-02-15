@@ -1,8 +1,9 @@
 package me.codinginterview.techinterviewserver.domain.post;
 
 import lombok.AllArgsConstructor;
-import me.codinginterview.techinterviewserver.infra.entity.Post;
-import me.codinginterview.techinterviewserver.infra.entity.PostRepository;
+import me.codinginterview.techinterviewserver.infra.entity.post.Post;
+import me.codinginterview.techinterviewserver.infra.entity.post.PostRepository;
+
 import org.springframework.data.domain.PageRequest;
 
 import java.text.ParseException;

@@ -1,9 +1,11 @@
-package me.codinginterview.techinterviewserver.infra.entity;
+package me.codinginterview.techinterviewserver.infra.entity.post;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import me.codinginterview.techinterviewserver.domain.post.PostDto;
+import me.codinginterview.techinterviewserver.infra.entity.user.User;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -33,7 +35,7 @@ public class Post {
         this.id = id;
     }
 
-    public static Post fromDomain(me.codinginterview.techinterviewserver.domain.post.Post post) {
+    public static Post fromDomain(PostDto post) {
         return Post.builder()
                    .id(post.getId())
                    .title(post.getTitle())
@@ -43,13 +45,13 @@ public class Post {
                    .build();
     }
 
-    public me.codinginterview.techinterviewserver.domain.post.Post toDomain() {
-        return me.codinginterview.techinterviewserver.domain.post.Post.builder()
-                                                                      .id(id)
-                                                                      .title(title)
-                                                                      .body(body)
-                                                                      .created(created)
-                                                                      .commentCount(commentCount)
-                                                                      .build();
+    public PostDto toDomain() {
+        return PostDto.builder()
+                      .id(id)
+                      .title(title)
+                      .body(body)
+                      .created(created)
+                      .commentCount(commentCount)
+                      .build();
     }
 }

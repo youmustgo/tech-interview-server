@@ -1,9 +1,9 @@
-package me.codinginterview.techinterviewserver.domain;
+package me.codinginterview.techinterviewserver.domain.collage;
 
 import lombok.RequiredArgsConstructor;
-import me.codinginterview.techinterviewserver.dto.NewCollageDto;
-import me.codinginterview.techinterviewserver.infra.entity.Collage;
-import me.codinginterview.techinterviewserver.infra.entity.CollageRepository;
+import me.codinginterview.techinterviewserver.infra.entity.collage.Collage;
+import me.codinginterview.techinterviewserver.infra.entity.collage.CollageRepository;
+
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
@@ -14,7 +14,7 @@ public class CollageService {
 
     private final CollageRepository collageRepository;
 
-    public void createdCollage(NewCollageDto newCollageDto) {
+    public void createdCollage(CollageDto newCollageDto) {
         Long viewerId = Long.valueOf(1);
         Collage newCollage = Collage.builder()
                 .title(newCollageDto.getTitle())

@@ -7,7 +7,7 @@ import lombok.Getter;
 
 @Getter
 @Builder(toBuilder = true)
-public class Post {
+public class PostDto {
     private final Long id;
     private final String title;
     private final String body;
