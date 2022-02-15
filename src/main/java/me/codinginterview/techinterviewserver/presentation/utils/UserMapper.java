@@ -1,7 +1,7 @@
 package me.codinginterview.techinterviewserver.presentation.utils;
 
 import me.codinginterview.techinterviewserver.domain.DomainException;
-import me.codinginterview.techinterviewserver.domain.user.User;
+import me.codinginterview.techinterviewserver.domain.user.UserDto;
 import org.apache.commons.beanutils.PropertyUtils;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 
@@ -12,7 +12,7 @@ public class UserMapper {
     private static final String PROVIDER_NAME_NAVER = "naver";
     private static final String PROVIDER_NAME_KAKAO = "kakao";
 
-    public static User fromOauth2(String registrationId, OAuth2User oauth2User) {
+    public static UserDto fromOauth2(String registrationId, OAuth2User oauth2User) {
         switch (registrationId.toLowerCase()) {
             case PROVIDER_NAME_GOOGLE:
                 return createUserFromGoogle(oauth2User);
@@ -26,8 +26,8 @@ public class UserMapper {
     }
 
     // https://developers.google.com/identity/protocols/oauth2/openid-connect
-    private static User createUserFromGoogle(OAuth2User oAuth2User) {
-        return User.builder()
+    private static UserDto createUserFromGoogle(OAuth2User oAuth2User) {
+        return UserDto.builder()
                    .namespace(PROVIDER_NAME_GOOGLE)
                    .localId(oAuth2User.getAttribute("sub"))
                    .name(oAuth2User.getAttribute("name"))
@@ -35,8 +35,8 @@ public class UserMapper {
     }
 
     // https://developers.naver.com/docs/login/devguide/devguide.md
-    private static User createUserFromNaver(OAuth2User oAuth2User) {
-        return User.builder()
+    private static UserDto createUserFromNaver(OAuth2User oAuth2User) {
+        return UserDto.builder()
                    .namespace(PROVIDER_NAME_NAVER)
                    .localId(getNaverId(oAuth2User.getAttributes()))
                    .name(getNaverName(oAuth2User.getAttributes()))
@@ -60,8 +60,8 @@ public class UserMapper {
     }
 
     // https://developers.kakao.com/docs/latest/ko/kakaologin/rest-api
-    private static User createUserFromKakao(OAuth2User oAuth2User) {
-        return User.builder()
+    private static UserDto createUserFromKakao(OAuth2User oAuth2User) {
+        return UserDto.builder()
                    .namespace(PROVIDER_NAME_KAKAO)
                    .localId(getKakaoId(oAuth2User.getAttributes()))
                    .name(getKakaoProfileNickname(oAuth2User.getAttributes()))

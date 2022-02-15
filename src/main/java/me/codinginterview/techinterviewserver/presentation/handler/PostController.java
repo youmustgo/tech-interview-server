@@ -3,7 +3,7 @@ package me.codinginterview.techinterviewserver.presentation.handler;
 import me.codinginterview.techinterviewserver.domain.post.PostFetcher;
 import me.codinginterview.techinterviewserver.domain.post.PostInserter;
 import me.codinginterview.techinterviewserver.domain.post.PostUpdater;
-import me.codinginterview.techinterviewserver.infra.entity.Post;
+import me.codinginterview.techinterviewserver.infra.entity.post.Post;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,12 +39,12 @@ public class PostController {
     }
 
     @PostMapping
-    public me.codinginterview.techinterviewserver.domain.post.Post insert(@RequestBody me.codinginterview.techinterviewserver.domain.post.Post post) {
+    public me.codinginterview.techinterviewserver.domain.post.PostDto insert(@RequestBody me.codinginterview.techinterviewserver.domain.post.PostDto post) {
         return postInserter.insert(post.getTitle(), post.getBody());
     }
 
     @PutMapping("/{id}")
-    public void update(@PathVariable("id") long id, @RequestBody me.codinginterview.techinterviewserver.domain.post.Post post) {
+    public void update(@PathVariable("id") long id, @RequestBody me.codinginterview.techinterviewserver.domain.post.PostDto post) {
         postUpdater.update(id, post.getTitle(), post.getBody());
     }
 

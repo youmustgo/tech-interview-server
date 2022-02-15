@@ -1,7 +1,7 @@
 package me.codinginterview.techinterviewserver.presentation.handler;
 
 import lombok.AllArgsConstructor;
-import me.codinginterview.techinterviewserver.domain.user.User;
+import me.codinginterview.techinterviewserver.domain.user.UserDto;
 import me.codinginterview.techinterviewserver.domain.user.UserRegisterService;
 import me.codinginterview.techinterviewserver.presentation.utils.UserMapper;
 import org.springframework.http.HttpHeaders;
@@ -26,7 +26,7 @@ public class UserController {
     public void register(HttpServletResponse httpServletResponse) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication instanceof OAuth2AuthenticationToken) {
-            User savedUser = userRegisterService.register(UserMapper.fromOauth2(((OAuth2AuthenticationToken) authentication).getAuthorizedClientRegistrationId(),
+            UserDto savedUser = userRegisterService.register(UserMapper.fromOauth2(((OAuth2AuthenticationToken) authentication).getAuthorizedClientRegistrationId(),
                                                                                 ((OAuth2AuthenticationToken) authentication).getPrincipal()));
             Cookie sessionCookie = new Cookie(CookieName.SESSION.name(), savedUser.getSession());
             sessionCookie.setPath("/");
